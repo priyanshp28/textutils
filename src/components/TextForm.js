@@ -40,7 +40,7 @@ export default function TextForm(props) {
           <textarea
             className="form-control"
             style={{
-              backgroundColor: props.mode === "dark" ? "grey" : "white",
+              backgroundColor: props.mode === "dark" ? "#1f6176" : "white",
               color: props.mode === "dark" ? "white" : "black"
             }}
             value={text}
@@ -50,19 +50,19 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLowerClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleLowerClick}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleClearClick}>
           Clear
         </button>
-        <button className="btn btn-primary mx-2" onClick={speak}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={speak}>
           Speak
         </button>
-        <button className="btn btn-primary mx-2" onClick={copyText}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={copyText}>
           Copy Text
         </button>
       </div>
@@ -70,7 +70,7 @@ export default function TextForm(props) {
       <div className="container my-2" style={{ color: props.mode === "dark" ? "white" : "black" }}>
         <h1>My text summary</h1>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters
         </p>
         <h2>Preview</h2>
         <p>{text.length>0? text: "Enter something in above textbox to preview it here"}</p>
